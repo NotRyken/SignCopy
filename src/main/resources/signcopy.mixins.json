@@ -1,13 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.cominixo.signcopy.mixin",
-  "compatibilityLevel": "JAVA_16",
-  "client": [
-    "AbstractSignBlockMixin",
-    "SignBlockEntityAccessor"
-  ],
+  "package": "notryken.signcopy.mixin",
+  "compatibilityLevel": "JAVA_17",
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "mixins": [
+    "AbstractSignBlockMixin",
+    "SignBlockEntityAccessor"
+  ]
 }

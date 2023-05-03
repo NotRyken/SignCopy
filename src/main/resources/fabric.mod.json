@@ -2,11 +2,17 @@
   "schemaVersion": 1,
   "id": "signcopy",
   "version": "${version}",
-  "name": "SignCopy",
-  "description": "A mod that allows you to copy text from signs.",
+  "name": "Sign Copy",
+  "description": "Allows you to copy text from signs by right-clicking.",
   "authors": [
-    "cominixo"
+    "cominixo",
+    "NotRyken"
   ],
+  "contact": {
+    "homepage": "https://github.com/NotRyken/SignCopy",
+    "sources": "https://github.com/NotRyken/SignCopy",
+    "issues": "https://github.com/NotRyken/SignCopy/issues"
+  },
   "icon": "assets/signcopy/icon.png",
   "license": "MIT",
   "environment": "client",
@@ -14,7 +20,13 @@
     "signcopy.mixins.json"
   ],
   "depends": {
-    "fabricloader": "*",
-    "minecraft": ">=1.16"
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "fabric-lifecycle-events-v1": "*",
+    "fabric-key-binding-api-v1": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "suggests": {
+    "flamingo": "*"
   }
 }
