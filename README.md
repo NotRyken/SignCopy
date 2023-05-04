@@ -5,7 +5,9 @@ text from signs in-game.
 ## Usage
 
 Right-click on a sign with an empty main hand. The text will be automatically
-copied to your clipboard.
+copied to your clipboard, so you can paste it with CTRL+V
+
+![](https://i.postimg.cc/3wvvFcyx/signcopy-example.png)
 
 ## Contact
 
