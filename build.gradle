@@ -3,12 +3,9 @@ plugins {
     id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
 version = project.mod_version + "+mc" + project.minecraft_version
 group = project.maven_group
+archivesBaseName = project.archives_base_name
 
 repositories {
     // Add repositories to retrieve artifacts from in here.
@@ -24,9 +21,9 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-        // Fabric API. This is technically optional, but you probably want it anyway.
+    // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    }
+}
 
 processResources {
     inputs.property "version", project.version
@@ -73,6 +70,7 @@ publishing {
     publications {
         //noinspection GroovyAssignabilityCheck
         mavenJava(MavenPublication) {
+            //noinspection GroovyAssignabilityCheck
             from components.java
         }
     }
