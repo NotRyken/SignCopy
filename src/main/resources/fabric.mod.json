@@ -20,13 +20,8 @@
     "signcopy.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=0.14.0",
     "fabric": "*",
-    "fabric-lifecycle-events-v1": "*",
-    "fabric-key-binding-api-v1": "*",
-    "minecraft": "${minecraft_version}"
-  },
-  "suggests": {
-    "flamingo": "*"
+    "minecraft": ">=1.20"
   }
 }

@@ -7,7 +7,9 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "AbstractSignBlockMixin",
-    "SignBlockEntityAccessor"
+    "MixinAbstractSignBlock"
+  ],
+  "client": [
+    "MixinAbstractSignEditScreen"
   ]
 }
