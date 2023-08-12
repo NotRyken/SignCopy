@@ -19,17 +19,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(AbstractSignBlock.class)
 public class MixinAbstractSignBlock
 {
-    @Inject(method = "onUse", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "onUse", at = @At("HEAD"))
     public void onSignUse(BlockState state, World world, BlockPos pos,
                           PlayerEntity player, Hand hand, BlockHitResult hit,
                           CallbackInfoReturnable<ActionResult> cir)
     {
-        if (player.getMainHandStack().isEmpty() && player.isSneaking()) {
+        if (player.isSneaking()) {
             if (world.getBlockEntity(pos) instanceof SignBlockEntity signBlockEntity) {
                 SignData.frontText = signBlockEntity.getFrontText();
                 player.sendMessage(Text.literal("Text copied from sign!"), true);
-                cir.setReturnValue(ActionResult.PASS);
-                cir.cancel();
             }
         }
     }
