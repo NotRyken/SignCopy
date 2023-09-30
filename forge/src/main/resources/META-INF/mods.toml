@@ -1,0 +1,27 @@
+modLoader = "javafml"
+loaderVersion = "[40,)"
+issueTrackerURL = "https://github.com/NotRyken/SignCopy/issues"
+displayURL = "https://modrinth.com/mod/sign-copy"
+license = "MIT"
+
+[[mods]]
+modId = "signcopy"
+version = "${version}"
+displayName = "Sign Copy"
+authors = "NotRyken"
+description = "Provides support for copying, inserting and erasing text from signs."
+logoFile = "assets/signcopy/icon.png"
+
+[[dependencies.signcopy]]
+modId = "forge"
+mandatory = true
+versionRange = "[41.0.15,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.signcopy]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.2,)"
+ordering = "NONE"
+side = "BOTH"

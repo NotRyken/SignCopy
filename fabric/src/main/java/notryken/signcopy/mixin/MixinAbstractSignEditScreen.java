@@ -5,7 +5,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
-import notryken.signcopy.SignData;
+import notryken.signcopy.SignCopy;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -56,28 +56,39 @@ public abstract class MixinAbstractSignEditScreen extends Screen
     private void copyText()
     {
         if (this.text.hasText(client.player)) {
-            SignData.copiedText = this.text;
-            client.setScreen(null);
-            client.player.sendMessage(Text.literal("Text copied from sign!"), true);
+            SignCopy.copiedText = this.text;
+            this.close();
         }
-        this.close();
     }
 
     @Unique
     private void insertText()
     {
-        if (SignData.copiedText != null) {
+        if (SignCopy.copiedText != null) {
             for(int i = 0; i < this.messages.length; i++) {
-                this.messages[i] = SignData.copiedText.getMessage(i, false).getString();
+                this.messages[i] = SignCopy.copiedText.getMessage(i, false).getString();
             }
+            this.close();
         }
-        this.close();
     }
 
     @Unique
     private void eraseText()
     {
-        Arrays.fill(this.messages, "");
-        this.close();
+        if (!this.isBlank()) {
+            Arrays.fill(this.messages, "");
+            this.close();
+        }
+    }
+
+    @Unique
+    private boolean isBlank()
+    {
+        for (String s : this.messages) {
+            if (!s.isBlank()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

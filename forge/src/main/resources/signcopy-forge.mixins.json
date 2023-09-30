@@ -1,0 +1,8 @@
+{
+  "parent": "signcopy-common.mixins.json",
+  "package": "notryken.signcopy.mixin",
+  "client": [
+    "MixinAbstractSignBlock",
+    "MixinAbstractSignEditScreen"
+  ]
+}

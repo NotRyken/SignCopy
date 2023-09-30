@@ -10,7 +10,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import notryken.signcopy.SignData;
+import notryken.signcopy.SignCopy;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,8 +24,9 @@ public class MixinAbstractSignBlock
                           PlayerEntity player, Hand hand, BlockHitResult hit,
                           CallbackInfoReturnable<ActionResult> cir)
     {
-        if (world.getBlockEntity(pos) instanceof SignBlockEntity sign && sign.isWaxed()) {
-            SignData.copiedText = sign.getFrontText();
+        if (world.getBlockEntity(pos) instanceof SignBlockEntity sign
+                && sign.isWaxed() && player.getMainHandStack().isEmpty()) {
+            SignCopy.copiedText = sign.getFrontText();
             player.sendMessage(Text.literal("Text copied from sign!"), true);
         }
     }

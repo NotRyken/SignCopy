@@ -1,27 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "signcopy",
+  "id": "sign-copy",
   "version": "${version}",
   "name": "Sign Copy",
-  "description": "Allows you to copy text from signs by right-clicking.",
+  "description": "Provides support for copying, inserting and erasing text from signs.",
   "authors": [
-    "cominixo",
     "NotRyken"
   ],
   "contact": {
-    "homepage": "https://github.com/NotRyken/SignCopy",
+    "homepage": "https://modrinth.com/mod/sign-copy",
     "sources": "https://github.com/NotRyken/SignCopy",
     "issues": "https://github.com/NotRyken/SignCopy/issues"
   },
-  "icon": "assets/signcopy/icon.png",
   "license": "MIT",
+  "icon": "assets/signcopy/icon.png",
   "environment": "client",
+  "entrypoints": {
+  },
   "mixins": [
-    "signcopy.mixins.json"
+    "signcopy-fabric.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.0",
     "fabric": "*",
-    "minecraft": "1.20.2"
+    "minecraft": ">=1.20.2"
   }
 }
