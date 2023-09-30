@@ -24,11 +24,9 @@ public class MixinAbstractSignBlock
                           PlayerEntity player, Hand hand, BlockHitResult hit,
                           CallbackInfoReturnable<ActionResult> cir)
     {
-        if (player.isSneaking()) {
-            if (world.getBlockEntity(pos) instanceof SignBlockEntity signBlockEntity) {
-                SignData.frontText = signBlockEntity.getFrontText();
-                player.sendMessage(Text.literal("Text copied from sign!"), true);
-            }
+        if (world.getBlockEntity(pos) instanceof SignBlockEntity sign && sign.isWaxed()) {
+            SignData.copiedText = sign.getFrontText();
+            player.sendMessage(Text.literal("Text copied from sign!"), true);
         }
     }
 }

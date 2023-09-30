@@ -4,5 +4,5 @@ import net.minecraft.block.entity.SignText;
 
 public class SignData
 {
-    public static SignText frontText;
+    public static SignText copiedText;
 }
