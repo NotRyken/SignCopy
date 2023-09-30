@@ -24,10 +24,21 @@ public class MixinAbstractSignBlock
                           PlayerEntity player, Hand hand, BlockHitResult hit,
                           CallbackInfoReturnable<ActionResult> cir)
     {
-        if (world.getBlockEntity(pos) instanceof SignBlockEntity sign &&
-                sign.isWaxed() && player.getMainHandStack().isEmpty()) {
-            SignCopy.copiedText = sign.getFrontText();
-            player.sendMessage(Text.literal("Text copied from sign!"), true);
+        if (world.getBlockEntity(pos) instanceof SignBlockEntity sign
+                && player.getMainHandStack().isEmpty()) {
+            Text[] texts = sign.getTexts(player.shouldFilterText());
+            String[] strings = new String[texts.length];
+            boolean blank = true;
+            for (int i = 0; i < texts.length; i++) {
+                strings[i] = texts[i].getString();
+                if (!strings[i].isBlank()) {
+                    blank = false;
+                }
+            }
+            if (!blank) {
+                SignCopy.copiedText = strings;
+                player.sendMessage(Text.literal("Text copied from sign!"), true);
+            }
         }
     }
 }

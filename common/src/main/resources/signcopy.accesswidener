@@ -1,1 +1,2 @@
 accessWidener v1 named
+accessible method net/minecraft/block/entity/SignBlockEntity getTexts (Z)[Lnet/minecraft/text/Text;

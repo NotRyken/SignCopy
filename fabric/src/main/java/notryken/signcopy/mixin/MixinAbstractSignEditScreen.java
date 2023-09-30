@@ -1,6 +1,5 @@
 package notryken.signcopy.mixin;
 
-import net.minecraft.block.entity.SignText;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -14,8 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Arrays;
-
 @Mixin(AbstractSignEditScreen.class)
 public abstract class MixinAbstractSignEditScreen extends Screen
 {
@@ -23,10 +20,7 @@ public abstract class MixinAbstractSignEditScreen extends Screen
         super(title);
     }
 
-    @Shadow
-    private SignText text;
-
-    @Shadow @Final private String[] messages;
+    @Shadow @Final protected String[] text;
 
     @Shadow public abstract void close();
 
@@ -35,29 +29,23 @@ public abstract class MixinAbstractSignEditScreen extends Screen
     {
         ButtonWidget copyButton = ButtonWidget.builder(Text.of("Copy"),
                         (button) -> copyText())
-                .dimensions(this.width / 2 - 100, this.height / 4 + 119, 60, 20)
+                .dimensions(this.width / 2 - 100, this.height / 4 + 94, 95, 20)
                 .build();
         this.addDrawableChild(copyButton);
 
         ButtonWidget insertButton = ButtonWidget.builder(Text.of("Insert"),
                         (button) -> insertText())
-                .dimensions(this.width / 2 - 30, this.height / 4 + 119, 60, 20)
+                .dimensions(this.width / 2 + 5, this.height / 4 + 94, 95, 20)
                 .build();
+        insertButton.active = SignCopy.copiedText != null;
         this.addDrawableChild(insertButton);
-
-        ButtonWidget eraseButton = ButtonWidget.builder(Text.of("Erase"),
-                        (button) -> eraseText())
-                .dimensions(this.width / 2 + 40, this.height / 4 + 119, 60, 20)
-                .build();
-        this.addDrawableChild(eraseButton);
     }
 
     @Unique
     private void copyText()
     {
-        if (this.text.hasText(client.player)) {
+        if (!this.isBlank()) {
             SignCopy.copiedText = this.text;
-            this.close();
         }
     }
 
@@ -65,18 +53,7 @@ public abstract class MixinAbstractSignEditScreen extends Screen
     private void insertText()
     {
         if (SignCopy.copiedText != null) {
-            for(int i = 0; i < this.messages.length; i++) {
-                this.messages[i] = SignCopy.copiedText.getMessage(i, false).getString();
-            }
-            this.close();
-        }
-    }
-
-    @Unique
-    private void eraseText()
-    {
-        if (!this.isBlank()) {
-            Arrays.fill(this.messages, "");
+            System.arraycopy(SignCopy.copiedText, 0, this.text, 0, this.text.length);
             this.close();
         }
     }
@@ -84,7 +61,7 @@ public abstract class MixinAbstractSignEditScreen extends Screen
     @Unique
     private boolean isBlank()
     {
-        for (String s : this.messages) {
+        for (String s : this.text) {
             if (!s.isBlank()) {
                 return false;
             }
