@@ -1,11 +1,24 @@
-/fabric/.gradle/
-/fabric/build/
-/fabric/run/
-/forge/.gradle/
-/forge/build/
-/forge/run/
-/common/.gradle/
-/common/build/
-/.gradle/
-/.idea/
-/build/
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea/*
+!.idea/scopes
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+runs

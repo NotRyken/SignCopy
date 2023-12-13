@@ -1,8 +1,7 @@
 package notryken.signcopy;
 
-import net.minecraft.block.entity.SignText;
+import net.minecraft.world.level.block.entity.SignText;
 
-public class SignCopy
-{
+public class SignCopy {
     public static SignText copiedText;
 }

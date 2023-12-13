@@ -1,0 +1,18 @@
+# Done to increase the memory available to gradle.
+org.gradle.jvmargs=-Xmx3G
+
+# Project
+projectGroup=notryken
+projectName=SignCopy
+projectArchiveBaseName=sign-copy
+projectVersion=1.0.3
+
+# Minecraft
+mcVersion=1.20.2
+yarnMappings=build.1
+
+# Mod Loaders
+enabledPlatforms=fabric,forge
+fabricLoaderVersion=0.14.22
+fabricApiVersion=0.89.2+1.20.2
+forgeVersion=1.20.2-48.0.6
