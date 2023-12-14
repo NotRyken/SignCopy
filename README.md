@@ -29,4 +29,4 @@ Sign Copy enables copying, inserting and erasing text from signs in a couple of 
 
 [![Discord](https://img.shields.io/discord/1103153365216669797?logo=discord&label=Discord&color=%235865F2)](https://discord.gg/sSgQ9AF4mU)
 
-[![GitHub Issues](https://img.shields.io/github/issues/NotRyken/SignCopy?logo=github&label=Issues)](https://github.com/NotRyken/CommandKeys/issues)
+[![GitHub Issues](https://img.shields.io/github/issues/NotRyken/SignCopy?logo=github&label=Issues)](https://github.com/NotRyken/SignCopy/issues)
